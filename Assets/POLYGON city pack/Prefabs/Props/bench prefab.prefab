@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 33202598452609472}
   - component: {fileID: 23729058636220162}
   - component: {fileID: 65738914748616680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bench
-  m_TagString: Untagged
+  m_TagString: obstaculos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -93,8 +93,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.0066828094, y: 0.01824317, z: 0.00264289}
-  m_Center: {x: -0.0035747772, y: 0.0023600224, z: 0.00639113}
+  m_Size: {x: 0.00913547, y: 0.016535733, z: 0.0048071826}
+  m_Center: {x: -0.0023484465, y: 0.001506298, z: 0.0053089857}
 --- !u!1 &1228088659953116
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,9 +104,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4488567837450824}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bench prefab
-  m_TagString: Untagged
+  m_TagString: obstaculos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,7 +120,7 @@ Transform:
   m_GameObject: {fileID: 1228088659953116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5048813, y: 2.6974998, z: 1.5048813}
   m_Children:
   - {fileID: 4045102420147112}
   m_Father: {fileID: 0}

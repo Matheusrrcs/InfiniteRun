@@ -35,7 +35,7 @@ public class ChangeScene : MonoBehaviour
    }
 
    public void Pause(){
- gc.PauseGame();
+   gc.PauseGame();
    
    }
 

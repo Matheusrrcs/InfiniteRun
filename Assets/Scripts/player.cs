@@ -9,13 +9,13 @@ public class player : MonoBehaviour
     public float gravity;
     public float speed;
     public float jumpHeight; 
-    public float jumpMax;
     public float rayRadius;
     public bool isDead;
     public float laneDistance = 4;// Distancia entre duas pistas
     public float maxSpeed;
 
     public LayerMask layer;
+    public LayerMask coinLayer;
     public Animator anime;
     private CharacterController controller;
     private GameController gc;
@@ -40,9 +40,8 @@ public class player : MonoBehaviour
    // verifica se player está no chão para ativar o pulo
         if (controller.isGrounded)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            { 
-                anime.SetFloat("JumpSpeed", speed / jumpHeight);
+            if (Input.GetKeyDown(KeyCode.UpArrow) && !isSliding)
+            {
                 anime.SetBool("Jumping", true);
                 jumpVelocity = jumpHeight;
                 direction.z = 5 * Time.deltaTime;
@@ -69,20 +68,15 @@ if(Input.GetKeyDown(KeyCode.DownArrow) && !isSliding){
 
 
     //aumenta speed
-      if(speed < maxSpeed){
+      if(speed <= maxSpeed){
       speed += 0.1f * Time.deltaTime; 
-
+   
       }
-      
-      if(jumpHeight < jumpMax){
-          jumpHeight += 0.1f * Time.deltaTime;
-      }
-        
-
+   
 
         direction.y = jumpVelocity;
 
-        if(!isDead){ 
+        if(!isDead){
         controller.Move(direction * Time.deltaTime);
     }
         //reune a informação sobre a pista em que devemos estar
@@ -150,11 +144,11 @@ if(Input.GetKeyDown(KeyCode.DownArrow) && !isSliding){
     void OnColission()
     {
 
-        RaycastHit hit;
+      RaycastHit hit;
 
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, rayRadius, layer) && !isDead)
         {
-
+           
             anime.SetTrigger("die");
 
             speed = 0;
@@ -167,9 +161,13 @@ if(Input.GetKeyDown(KeyCode.DownArrow) && !isSliding){
 
     }
 
+
     void GameOver()
     {
         gc.ShowGameOver();
     }
+
+
+
 
 }

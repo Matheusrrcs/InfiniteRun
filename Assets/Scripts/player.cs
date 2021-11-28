@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+ 
 
 public class player : MonoBehaviour
 {
@@ -15,7 +16,6 @@ public class player : MonoBehaviour
     public float maxSpeed;
 
     public LayerMask layer;
-    public LayerMask coinLayer;
     public Animator anime;
     private CharacterController controller;
     private GameController gc;
@@ -29,6 +29,7 @@ public class player : MonoBehaviour
         controller = GetComponent<CharacterController>();
         gc = FindObjectOfType<GameController>();
         anime = FindObjectOfType<Animator>();
+        
     }
 
     void Update()
@@ -40,7 +41,7 @@ public class player : MonoBehaviour
    // verifica se player está no chão para ativar o pulo
         if (controller.isGrounded)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && !isSliding)
+            if (Swipe.swipeUp && !isSliding)
             {
                 anime.SetBool("Jumping", true);
                 jumpVelocity = jumpHeight;
@@ -62,7 +63,7 @@ public class player : MonoBehaviour
         }
 
 //condição pra slider
-if(Input.GetKeyDown(KeyCode.DownArrow) && !isSliding){
+if(Swipe.swipeDown && !isSliding){
     StartCoroutine(Slide());
 }
 
@@ -81,7 +82,7 @@ if(Input.GetKeyDown(KeyCode.DownArrow) && !isSliding){
     }
         //reune a informação sobre a pista em que devemos estar
 
-        if (Input.GetKeyDown(KeyCode.RightArrow) && !isDead)
+        if (Swipe.swipeRight && !isDead)
         {
             desiredLane++;
             if (desiredLane == 3)
@@ -89,7 +90,7 @@ if(Input.GetKeyDown(KeyCode.DownArrow) && !isSliding){
                 desiredLane = 2;
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow) && !isDead)
+        if (Swipe.swipeLeft && !isDead)
         {
             desiredLane--;
             if (desiredLane == -1)
